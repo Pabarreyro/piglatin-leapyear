@@ -1,5 +1,4 @@
 // Business Logic
-var vowels = ["a","e","i","o","u"];
 
 // Translates individual word into pig latin
 function translateWord(word) {
@@ -20,7 +19,8 @@ function translateWord(word) {
     var leadingConsonants = "";
 
     for (var i = 0; i <= lettersArray.length; i++) {
-      if (leadingConsonants.length < lettersArray.length && vowels.includes(lettersArray[i]) === false) {
+      var value = lettersArray[i];
+      if (leadingConsonants.length < lettersArray.length && value.match(/[aeiou]/) === null) {
         leadingConsonants += lettersArray[i];
       } else {
         break
