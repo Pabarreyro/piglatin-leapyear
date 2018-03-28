@@ -19,24 +19,29 @@ function translateWord(word) {
     var leadingConsonants = "";
 
     for (var i = 0; i <= lettersArray.length; i++) {
-      if (vowels.includes(lettersArray[i]) === false) {
+      if (leadingConsonants.length < lettersArray.length && vowels.includes(lettersArray[i]) === false) {
         leadingConsonants += lettersArray[i];
       } else {
         break
       }
     }
-    return leadingConsonants;
+    console.log(leadingConsonants);
+    if (leadingConsonants.charAt(leadingConsonants.length-1) === "q" && word[leadingConsonants.length] === "u") {
+      leadingConsonants += "u";
+      return leadingConsonants;
+    } else if (leadingConsonants.charAt(leadingConsonants.length-1) === "y") {
+      leadingConsonants = leadingConsonants.slice(0,leadingConsonants.length-1);
+      return leadingConsonants;
+    } else {
+      return leadingConsonants;
+    }
   };
 
   // Determines what is returned to user
   if (checkVowel === false) {
-    if (word[0] === "q" && word[1] === "u") {
-      return word.slice(2,word.length) + "Quay";
-    } else {
-      var firstConsonants = checkConsonants(word);
-      var firstConsonantsCaps = firstConsonants.charAt(0).toUpperCase() + firstConsonants.substr(1);
-      return word.slice(firstConsonants.length,word.length) + firstConsonantsCaps + "ay";
-    }
+    var firstConsonants = checkConsonants(word);
+    var firstConsonantsCaps = firstConsonants.charAt(0).toUpperCase() + firstConsonants.substr(1);
+    return word.slice(firstConsonants.length,word.length) + firstConsonantsCaps + "ay";
   } else {
     return word + "Way";
   }
