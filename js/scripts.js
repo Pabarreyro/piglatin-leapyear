@@ -30,7 +30,7 @@ function translateWord(word) {
     if (leadingConsonants.match(/q$/) && word.match(/q(.)/).includes("u")) {
       leadingConsonants += "u";
       return leadingConsonants;
-    } else if (leadingConsonants.charAt(leadingConsonants.length-1) === "y") {
+    } else if (leadingConsonants.match(/y$/)) {
       leadingConsonants = leadingConsonants.slice(0,leadingConsonants.length-1);
       return leadingConsonants;
     } else {
@@ -65,6 +65,7 @@ $(function() {
     var userInput = $("input").val().toLowerCase().trim();
     var wordsArray = userInput.split(" ");
     var output = loadWords(wordsArray);
+    $(".output").show();
     $("#outputWord").text(output);
   });
 });
