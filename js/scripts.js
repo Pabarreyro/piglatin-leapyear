@@ -1,7 +1,8 @@
 // Business Logic
 var vowels = ["a","e","i","o","u"];
 
-function pigLatin(word) {
+// Translates individual word into pig latin
+function translateWord(word) {
   var firstLetter = word[0];
   var checkVowel;
 
@@ -11,16 +12,15 @@ function pigLatin(word) {
   } else {
     checkVowel = false;
   }
-  console.log(checkVowel);
 
   // Run a for loop to check if input word starts with multiple consonants
   function checkConsonants(word) {
-    var wordArray = word.split("");
+    var lettersArray = word.split("");
     var leadingConsonants = "";
 
-    for (var i = 0; i <= wordArray.length; i++) {
-      if (vowels.includes(wordArray[i]) === false) {
-        leadingConsonants += wordArray[i];
+    for (var i = 0; i <= lettersArray.length; i++) {
+      if (vowels.includes(lettersArray[i]) === false) {
+        leadingConsonants += lettersArray[i];
       } else {
         break
       }
@@ -28,19 +28,27 @@ function pigLatin(word) {
     return leadingConsonants;
   };
 
-
   // Determines what is returned to user
   if (checkVowel === false) {
     if (word[0] === "q" && word[1] === "u") {
-      return word.slice(2,word.length) + word.slice(0,2) + "ay";
+      return word.slice(2,word.length) + "Quay";
     } else {
       var firstConsonants = checkConsonants(word);
-      return word.slice(firstConsonants.length,word.length) + firstConsonants + "ay";
+      var firstConsonantsCaps = firstConsonants.charAt(0).toUpperCase() + firstConsonants.substr(1);
+      return word.slice(firstConsonants.length,word.length) + firstConsonantsCaps + "ay";
     }
   } else {
-    return word + "way";
+    return word + "Way";
   }
 };
+
+function loadWords(array) {
+  var translation = "";
+  array.forEach(function(element){
+    translation += translateWord(element) + " ";
+  })
+  return translation;
+}
 
 
 // User Logic
@@ -48,9 +56,9 @@ $(function() {
   $("form").submit(function(event) {
     event.preventDefault();
 
-    var userInput = $("input").val().trim();
-    var translation = pigLatin(userInput);
-
-    $("#outputWord").text(translation);
+    var userInput = $("input").val().toLowerCase().trim();
+    var wordsArray = userInput.split(" ");
+    var output = loadWords(wordsArray);
+    $("#outputWord").text(output);
   });
 });
