@@ -5,10 +5,9 @@
 ## Pig Latin Description
 
 Order of building
-* satisfies spec for lowercase single word inputs
-* satisfies spec for mixed case single word inputs
-* satisfies spec for lowercase multi-word inputs
-* satisfies spec for mixed case multi-word inputs
+* satisfies all specs for lowercase single word inputs
+* satisfies all specs for lowercase multi-word inputs
+* satisfies all specs for mixed case multi-word inputs
 * rejects num/symbol inputs
 
 * For words beginning with a vowel, add "way" to the end.

@@ -27,10 +27,16 @@ function pigLatin(word) {
     }
     return leadingConsonants;
   };
+
+
   // Determines what is returned to user
   if (checkVowel === false) {
-    var firstConsonants = checkConsonants(word);
-    return word.slice(firstConsonants.length,word.length) + firstConsonants + "ay";
+    if (word[0] === "q" && word[1] === "u") {
+      return word.slice(2,word.length) + word.slice(0,2) + "ay";
+    } else {
+      var firstConsonants = checkConsonants(word);
+      return word.slice(firstConsonants.length,word.length) + firstConsonants + "ay";
+    }
   } else {
     return word + "way";
   }
