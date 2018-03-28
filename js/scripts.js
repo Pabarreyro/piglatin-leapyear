@@ -7,8 +7,9 @@ function translateWord(word) {
   var checkVowel;
 
   // Check if firstLetter is a vowel
-  if (vowels.includes(firstLetter)) {
+  if (word.match(/^[aeiou]/)) {
     checkVowel = true;
+    console.log(word.match(/^[aeiou]/));
   } else {
     checkVowel = false;
   }
@@ -25,7 +26,7 @@ function translateWord(word) {
         break
       }
     }
-    console.log(leadingConsonants);
+    // console.log(leadingConsonants);
     if (leadingConsonants.charAt(leadingConsonants.length-1) === "q" && word[leadingConsonants.length] === "u") {
       leadingConsonants += "u";
       return leadingConsonants;
