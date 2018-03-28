@@ -6,10 +6,8 @@
 
 Order of building
 * satisfies spec for lowercase single word inputs
-* satisfies spec for uppercase single word inputs
 * satisfies spec for mixed case single word inputs
 * satisfies spec for lowercase multi-word inputs
-* satisfies spec for uppercase multi-word inputs
 * satisfies spec for mixed case multi-word inputs
 * rejects num/symbol inputs
 
