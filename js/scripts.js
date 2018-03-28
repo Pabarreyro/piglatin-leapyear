@@ -27,7 +27,7 @@ function translateWord(word) {
       }
     }
     // console.log(leadingConsonants);
-    if (leadingConsonants.charAt(leadingConsonants.length-1) === "q" && word[leadingConsonants.length] === "u") {
+    if (leadingConsonants.match(/q$/) && word.match(/q(.)/).includes("u")) {
       leadingConsonants += "u";
       return leadingConsonants;
     } else if (leadingConsonants.charAt(leadingConsonants.length-1) === "y") {
